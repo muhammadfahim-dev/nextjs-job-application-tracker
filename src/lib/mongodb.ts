@@ -17,7 +17,7 @@ const cached: MongooseCache = global.mongooseCache ?? {
 global.mongooseCache = cached;
 
 async function connectDB() {
-  const MONGODB_URL = process.env.MONDODB_URI;
+  const MONGODB_URL = process.env.MONGODB_URI;
 
   if (!MONGODB_URL) throw new Error("mongodb url missing");
 
@@ -36,7 +36,7 @@ async function connectDB() {
   } catch (error) {
     cached.promise = null;
     console.error("DB connection failed");
-    throw error
+    throw error;
   }
 
   return cached.conn;
